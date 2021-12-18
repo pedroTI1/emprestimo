@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioClientes" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="88af9ac5-c86c-4fe1-bfa1-15c5f57b046b">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="Y2xpZW50ZSBBUyAsMTE0LDEyOCxmYzZiMWRjZi0yZWMyLTQ4YzMtODQ3MC04NTQwY2YyNzc5MGM7"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Banco Emprestimo"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT codigo,
+	cpf,
+	nome
+FROM cliente
+ORDER BY cliente.nome ASC]]>
+	</queryString>
+	<field name="codigo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.label" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.label" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<staticText>
+				<reportElement x="130" y="0" width="330" height="69" uuid="d7f59212-fa23-4b2e-a82a-60eb6b0f7860"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="33"/>
+				</textElement>
+				<text><![CDATA[Relatório Clientes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="261" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="30" width="100" height="30" uuid="85401f93-8d1a-4cde-840b-d583805eedff"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cpf}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="30" height="30" uuid="a60a1cb0-f3d2-4e70-97f2-0381790d8589"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CPF:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="30" uuid="491530b5-e3dd-4fd9-98a3-0460e81cd50c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="f5e354cd-5c22-48ef-ab89-61542e49390e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome do Cliente:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="60" width="550" height="30" uuid="87785a66-3f39-4c09-9a5e-f71b5e9e8d7e"/>
+				<subreportParameter name="CODIGOCLIENTE">
+					<subreportParameterExpression><![CDATA[$F{codigo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["src/main/resources/relatorios/RelatorioSubEmprestimos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="68" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="19" width="100" height="30" uuid="585f46f2-4d3a-4972-bca6-627d3f9e75e1"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="370" y="19" width="100" height="30" uuid="3708fa46-b62d-4193-84dd-4a40afbc77a5"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="470" y="19" width="100" height="30" uuid="ea639a6d-369d-45f5-a60f-dc21a8c45361"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

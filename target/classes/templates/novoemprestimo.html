@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Gerenciador de Contatos com Spring Boot</title>
+</head>
+<body>
+
+	<form action="#" th:action="@{/emprestimo/inserirnovoemprestimo}" th:object="${emprestimo}" method="post">	
+		<p>
+			<label for="descricao">Descricao:</label>
+			<textarea th:field="*{descricao}"></textarea>
+		</p>
+		<p>
+			<label for="valor">Valor:</label>
+			<textarea th:field="*{valor}"></textarea>
+		</p>
+		<p>
+		<br>
+		<label for="cliente">Cliente:</label>
+		<select name = "codigocliente">
+			<option th:each = "i: ${clientes}" th:value = "${i.codigo}" th:text="${i.codigo + ' - ' + i.nome + ' - ' + i.cpf}"></option>
+		</select>
+		<br>
+		<br>
+			<label for="parcelas">Quantidade Parcelas:</label>
+                <select id="parcelas" name="parcelas">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+		<br>
+		<br>
+		
+		<input type="submit" value="Inserir">
+	</form>
+	<br>
+	<a th:href="@{/}">Voltar</a>
+</body>
+</html>

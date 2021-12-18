@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>Confirmar remocao</title>
+</head>
+<body>
+	<h1>Tem certeza que quer remover esse cliente?</h1>
+
+		<p>Nome: [[*{cliente.nome}]]</p>
+		<p>Placa: [[*{cliente.cpf}]]</p>
+		<form action="#" th:action="@{/clientes/remover}" th:object="${cliente}" method="post">
+			<input type="hidden" th:field="*{codigo}">	
+			<input type="hidden" th:field="*{nome}">
+			<input type="hidden" th:field="*{cpf}">
+			<input type="submit" value="Remover">
+		</form>
+	<hr>
+
+	<a th:href="@{/}">Voltar</a>
+</body>
+</html>

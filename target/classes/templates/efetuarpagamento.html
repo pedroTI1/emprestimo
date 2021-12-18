@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Emprestimos</title>
+</head>
+<body>
+	<h1>Pagar parcelas!</h1>
+				<p>Cliente: [[*{cliente.nome}]]</p>
+				
+				<p>CPF: [[*{cliente.cpf}]]</p>
+			
+				<p>Descricao: [[*{emprestimo.descricao}]]</p>
+			
+				<p>Data: [[*{emprestimo.data_emprestimo}]]</p>
+			
+				<p>Valor: [[*{emprestimo.valor}]]</p>
+			
+				<p>Total de parcelas: [[*{emprestimo.parcelas}]]</p>
+				
+				<p>Total de parcelas pagas: [[*{emprestimo.parcelas_pagas}]]</p>
+				
+			
+			<form action="#" th:action="@{/pagamento/efetuarpagamento}" method="post">
+					 <input type="hidden" name="codigo_emprestimo" th:value="*{emprestimo.codigo}">
+					 <input type="hidden" name="codigo_cliente" th:value="*{cliente.codigo}">
+					 <label for="parcelas_pagas">Quantas parcelas vao ser pagas:</label>
+					 <input type="number" name = "parcelas_pagas" ><br><br>
+             		 <input type="submit" value="Efetuar pagamento">   
+			</form>
+			<br><br>
+	<a th:href="@{/}">Voltar</a>
+</body>
+</html>

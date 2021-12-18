@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Clientes</title>
+</head>
+<body>
+	<h1>Clientes cadastrados!</h1>
+	<div th:each="cliente : ${clientes}">
+				<p>Nome: [[*{cliente.nome}]]</p>
+				<p>Placa: [[*{cliente.cpf}]]</p>
+			<form action="#" th:action="@{/clientes/alterarcliente}"  method="post">
+				<input type="hidden" name="codigo" th:value="*{cliente.codigo}">	
+				<input type="hidden" name="nome" th:value="*{cliente.nome}">
+				<input type="hidden" name="cpf" th:value="*{cliente.cpf}">
+				<input type="submit" value="Alterar">
+			</form>
+			<br>
+			<form action="#" th:action="@{/clientes/confirmaremocao}" method="post">
+				<input type="hidden" name="codigo" th:value="*{cliente.codigo}">	
+				<input type="hidden" name="nome" th:value="*{cliente.nome}">
+				<input type="hidden" name="cpf" th:value="*{cliente.cpf}">
+				<input type="submit" value="Remover">
+			</form>
+			<hr>
+	</div>
+	
+	<a th:href="@{/}">Voltar</a>
+</body>
+</html>
