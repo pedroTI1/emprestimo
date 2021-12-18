@@ -35,7 +35,7 @@ ORDER BY cliente.nome ASC]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="33"/>
 				</textElement>
-				<text><![CDATA[Relatório Clientes]]></text>
+				<text><![CDATA[Relatório Cliente]]></text>
 			</staticText>
 		</band>
 	</title>

@@ -22,7 +22,7 @@
 	parcelas_pagas,
 	situacao,
 	codigo_cliente
-FROM emprestimo WHERE  codigo_cliente =  $P{CODIGOCLIENTE} ]]>
+FROM emprestimo WHERE  codigo_cliente =  $P{CODIGOCLIENTE}]]>
 	</queryString>
 	<field name="codigo" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="codigo"/>
